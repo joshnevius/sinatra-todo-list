@@ -12,11 +12,10 @@ class ListsController < ApplicationController
     erb :'lists/new'
   end
 
-  post '/lists/new' do 
-    @user = current_user
-    list = @user.lists.create(name: params[:name])
-    task = list.tasks.create(name: params[:tasks][:name])
-    redirect '/tasks'
+  get "/lists/:id" do
+    redirect_if_not_logged_in
+    @list = List.find(params[:id])
+    erb :'lists/show'
   end
 
   get '/lists/:id/edit' do
@@ -27,6 +26,16 @@ class ListsController < ApplicationController
   end
 
   post "/lists/:id" do
+    redirect_if_not_logged_in
+    @list = List.find(params[:id])
+    unless List.valid_params?(params)
+      redirect "/lists/#{@list.id}/edit?error=invalid list"
+    end
+    @list.update(params.select{|l| l == "name"})
+    redirect "/lists/#{@list.id}"
+  end
+
+  post "/lists" do
     redirect_if_not_logged_in
     @list = List.find(params[:id])
     
