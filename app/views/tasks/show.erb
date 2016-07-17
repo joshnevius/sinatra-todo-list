@@ -1,0 +1,9 @@
+  <h1><font face="verdana,arial,sans-serif">Do Work: To-Do List</h2> 
+
+  <h3><%= @task.content %></h3>
+  <h4>List: <a href="/lists/<%=@task.list.id%>"><%= @task.list.name %></a></h4>
+  
+  <br></br>
+  
+  <a href="/tasks/<%=@task.id%>/edit">Edit Task</a>
+  

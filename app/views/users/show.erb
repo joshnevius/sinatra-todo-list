@@ -1,0 +1,11 @@
+<h1><font face="verdana,arial,sans-serif">Do Work: To-Do List</h2> 
+
+<br></br>
+
+<p>Your To-Do Lists:</p>
+
+<% @user.lists.each do |list| %>
+  <ul>
+    <li><a href="/lists/<%=list.id%>"><%= list.name %></li>
+  </ul>
+<% end %>
