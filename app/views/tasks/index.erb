@@ -1,0 +1,8 @@
+<h1><font face="verdana,arial,sans-serif">Do Work: To-Do List</h2> 
+
+<% @tasks.each do |task| %>
+  <%= task.name %><br />
+  <a href="/tasks/<%=task.id%>/edit">Edit Task</a>
+  <br></br>
+ 
+<% end %>
