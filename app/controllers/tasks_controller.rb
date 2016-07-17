@@ -27,7 +27,7 @@ class TasksController < ApplicationController
     unless Task.valid_params?(params)
       redirect '/tasks/#{@task.id}/edit?error=invalid task'
     end
-    @task.update(params.select{|l| l=="name"})
+    @task.update(params.select{|k|k=="name"})
     redirect '/tasks/#{@task.id}'
   end
 
