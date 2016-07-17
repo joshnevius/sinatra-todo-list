@@ -1,9 +1,22 @@
 class ListsController < ApplicationController
 
-  get '/lists' do
+  get '/lists/new' do
     redirect_if_not_logged_in
-    @lists = List.all
-    erb :'/lists/create_list'
+    erb :'/lists/new'
   end
+
+  post '/lists/new' do 
+    @user = current_user
+    list = @user.lists.create(name: params[:name])
+    task = list.tasks.create(name: params[:tasks][:name])
+    redirect '/tasks'
+  end
+
+  get '/lists/:id/edit' do
+    redirect_if_not_logged_in
+    @list = List.find_by_id(params[:id])
+    erb :'/lists/edit'
+  end
+
 
 end
