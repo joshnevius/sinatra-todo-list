@@ -2,15 +2,16 @@
 
 <br></br>
 
+<h3>Edit <%= @list.name %></h3>
+
 <form action="/lists/<%=@list.id %>" method="POST">
   <label> List Name: </label>
   <input type="text" name="name" value="<%=@list.name %>"> 
 
   <br></br>
 
-  <input type="submit" class="btn btn-primary">
+  <input type="submit" value="Submit">
 </form>
 
 <br></br>
 
-<h3>Edit <%= @list.name %></h3>
