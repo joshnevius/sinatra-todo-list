@@ -1,10 +1,16 @@
 <h1><font face="verdana,arial,sans-serif">Do Work: To-Do List</h2> 
+
 <br></br>
+
 <form action="/lists/<%=@list.id %>" method="POST">
   <label> List Name: </label>
   <input type="text" name="name" value="<%=@list.name %>"> 
-  </br><br>
+
+  <br></br>
+
   <input type="submit" class="btn btn-primary">
 </form>
+
 <br></br>
+
 <h3>Edit <%= @list.name %></h3>

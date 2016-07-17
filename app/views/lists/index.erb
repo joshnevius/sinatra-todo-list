@@ -1,11 +1,17 @@
 <h1><font face="verdana,arial,sans-serif">Do Work: To-Do List</h1> 
 
+<br></br>
+
 <h3><%= current_user.username%>'s Lists</h3>
+
 <br>
+
 <% @lists.each do |list| %>
   <ul>  
     <li><h4><a href ="/lists/<%=list.id%>"><%= list.name %></a></h4></li>
     <a href="/lists/<%=list.id%>/edit">Edit Name</a>
+    
     <br><br>
+  
   </ul>
 <% end %>
