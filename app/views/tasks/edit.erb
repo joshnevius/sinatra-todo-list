@@ -10,7 +10,7 @@
   <label> Task Content: </label>
   <input type="text" name="content" value="<%=@task.content %>"> <br></br>
 
-  <label> Which list does this task belong to? </label>
+  <label> Where does this task go? </label>
     <select name="list_id">
     <% @lists.each do |list| %>
       <option value=<%=list.id %> <%= "selected" if list.id==@task.list.id %> ><%= list.name %></option>

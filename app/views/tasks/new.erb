@@ -2,7 +2,7 @@
 
 <br></br>
 
-<h3>Add a New Task:</h3>
+<h3>Create a Task:</h3>
 
 <br></br>
 
@@ -12,7 +12,7 @@
  
   <br><br>
 
-  <label> Which List does this task belong to? </label>
+  <label> Where should this task go? </label>
   <select name="list_id">
     <% @lists.each do |list| %>
       <option value=<%=list.id %>><%= list.name %></option>
