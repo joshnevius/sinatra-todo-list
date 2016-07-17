@@ -9,12 +9,24 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    if params[:username].empty? || params[:password].empty?
+    if params[:username] == "" || params[:password] == ""
       redirect to '/signup'
     else 
       @user = User.create(:username => params[:username], :password => params[:password])
       session[:user_id] = @user.id
       redirect "/lists"
+    end
+  end
+
+  get '/users/:id' do
+    if !is_logged_in?
+      redirect '/lists'
+    end
+    @user = User.find(params[:id])
+    if !@user.nil? && @user == current_user
+      erb :'users/show'
+    else
+      redirect '/lists'
     end
   end
 
@@ -39,7 +51,7 @@ class UsersController < ApplicationController
 
   get '/logout' do
     if session[:user_id] != nil
-      session.destroy
+      session.clear
       redirect to '/login'
     else
       redirect to '/'
