@@ -1,0 +1,25 @@
+<h1><font face="verdana,arial,sans-serif">Do Work: To-Do List</h2> 
+
+<br></br>
+
+<h3>Add a New Task:</h3>
+
+<br></br>
+
+<form action="/tasks" method="POST">
+  <label> Task: </label>
+  <input type="text" name="content"> 
+ 
+  <br><br>
+
+  <label> Which List does this task belong to? </label>
+  <select name="list_id">
+    <% @lists.each do |list| %>
+      <option value=<%=list.id %>><%= list.name %></option>
+    <% end %>
+  </select>
+  
+  <br><br>
+  
+  <input type="submit" class="btn btn-primary">
+</form>
