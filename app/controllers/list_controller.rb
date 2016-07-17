@@ -18,5 +18,11 @@ class ListsController < ApplicationController
     erb :'/lists/edit'
   end
 
+  patch "/lists/:id" do
+    @list = List.find_by_id(params[:id])
+    @list.name = params[:name]
+    @list.save
+    redirect '/tasks'
+  end
 
 end
