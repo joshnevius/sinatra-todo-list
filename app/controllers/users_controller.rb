@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
 
   get '/signup' do
-    if !session[:user_id]
-      erb :'users/create_user'
+    if is_logged_in?
+      redirect '/tasks'
     else
-      redirect to '/lists'
+      erb :'users/signup'
     end
   end
 
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   get '/login' do
-    if !session[:user_id]
+    if session[:user_id]
       redirect '/tasks'
     else
       erb :'users/login'
