@@ -31,5 +31,20 @@ class TasksController < ApplicationController
     redirect '/tasks/#{@task.id}'
   end
 
+  get '/tasks/:id' do
+    redirect_if_not_logged_in
+    @task = Task.find(params[:id])
+    erb :'tasks/show'
+  end
+
+  post "/tasks" do
+    redirect_if_not_logged_in 
+    unless Task.valid_params?(params)
+      redirect "/tasks/new?error=invalid task"
+    end
+    Task.create(params)
+    redirect "/tasks"
+  end
+ 
 
 end
