@@ -25,4 +25,9 @@ class ListsController < ApplicationController
     redirect '/tasks'
   end
 
+  get '/lists' do
+    redirect_if_not_logged_in
+    @lists = List.all
+    erb :'lists/index'
+  end
 end
