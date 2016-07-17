@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
 
   get '/signup' do
-    if is_logged_in?
-      redirect '/tasks'
-    else
+    if !session[:user_id]
       erb :'users/signup'
+    else
+      redirect to '/tasks'
     end
   end
 
@@ -12,10 +12,9 @@ class UsersController < ApplicationController
     if params[:username].empty? || params[:password].empty?
       redirect to '/signup'
     else 
-      @user = User.new(username: params[:username], password: params[:password])
-      @user.save
+      @user = User.create(:username => params[:username], :password => params[:password])
       session[:user_id] = @user.id
-      redirect "/tasks"
+      redirect "/lists"
     end
   end
 
