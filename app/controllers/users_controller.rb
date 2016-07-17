@@ -19,20 +19,21 @@ class UsersController < ApplicationController
   end
 
   get '/login' do
-    if session[:user_id]
-      redirect '/tasks'
-    else
+    @error_message = params[:error]
+    if !session[:user_id]
       erb :'users/login'
+    else
+      redirect '/lists'
     end
   end
 
   post '/login' do
-    user = User.find_by(username: params[:username])
+    user = User.find_by(:username => params[:username])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect "/tasks"
+      redirect "/lists"
     else
-      redirect "/login"
+      redirect "/signup"
     end
   end
 
