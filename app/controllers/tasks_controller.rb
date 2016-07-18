@@ -28,12 +28,12 @@ class TasksController < ApplicationController
       redirect '/tasks/#{@task.id}/edit?error=invalid task'
     end
     @task.update(params.select{|k|k=="name"})
-    redirect '/tasks/#{@task.id}'
+    redirect "/tasks/#{@task.id}"
   end
 
   get '/tasks/:id' do
     redirect_if_not_logged_in
-    @task = Task.find(params[:id])
+    @task = Task.find_by_id(params[:id])
     erb :'tasks/show'
   end
 
@@ -44,6 +44,17 @@ class TasksController < ApplicationController
     end
     Task.create(params)
     redirect "/tasks"
+  end
+
+  get '/tasks/:id/delete' do 
+    @task = Task.find_by_id(params[:id])
+    erb :'/tasks/edit'
+  end
+
+  delete '/tasks/:id' do 
+    @task = Task.find_by_id(params[:id])
+    @task.destroy
+    redirect '/tasks'
   end
  
 

@@ -1,11 +1,11 @@
 <h3>Edit <%= @task.name %></h3>
 
 <form action="/tasks/<%=@task.id %>" method="POST">
-  <label> Task Name: </label>
-  <input type="text" name="name" value="<%=@task.name %>"> <br></br>
+  <label> Task: </label>
+  <input type="text" name="name" value="<%=@task.name %>"> </br> 
 
-  <label> Where does this task go? </label>
-    <select name="list_id">
+  <label> Where should this task go? </label>
+  <select name="list_id">
     <% @lists.each do |list| %>
       <option value=<%=list.id %> <%= "selected" if list.id==@task.list.id %> ><%= list.name %></option>
     <% end %>
@@ -13,3 +13,10 @@
   
   <input class="btn btn-primary" type="submit" value="Update">
 </form>
+
+<form method="post" action="/tasks/<%=@task.id%>">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input class="btn btn-primary" type="submit" value="Delete">
+<form>
+
+
