@@ -3,7 +3,7 @@
 <% @lists.each do |list| %>
   <ul>  
     <li><h4><a href ="/lists/<%=list.id%>"><%= list.name %></a></h4></li>
-    <a href="/lists/<%=list.id%>/edit">Edit Name</a>
+    <a href="/lists/<%=list.id%>/edit">Edit Name</a> &nbsp;<a href="/tasks/new">Add Task</a>
     
     <br><br>
   

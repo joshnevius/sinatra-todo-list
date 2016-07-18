@@ -12,12 +12,6 @@ class ListsController < ApplicationController
     erb :'lists/new'
   end
 
-  get "/lists/:id" do
-    redirect_if_not_logged_in
-    @list = List.find(params[:id])
-    erb :'lists/show'
-  end
-
   get '/lists/:id/edit' do
     redirect_if_not_logged_in
     @error_message = params[:error]
@@ -35,10 +29,14 @@ class ListsController < ApplicationController
     redirect "/lists/#{@list.id}"
   end
 
-  post "/lists" do
+  get "/lists/:id" do
     redirect_if_not_logged_in
     @list = List.find(params[:id])
-    
+    erb :'lists/show'
+  end
+
+  post "/lists" do
+    redirect_if_not_logged_in
     unless List.valid_params?(params)
       redirect "/lists/new?error=invalid list"
     end

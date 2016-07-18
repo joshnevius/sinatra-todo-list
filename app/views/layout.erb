@@ -6,6 +6,7 @@
 </head>
 <body>
 
+<div>
   <nav>
     <% if logged_in? %>
 
@@ -19,6 +20,7 @@
     <%end %>
 
   </nav>
+</div>
   <div class="container">
     <h1>Do Work: To-Do List</h1>
     <% if !@error_message.nil? %>
