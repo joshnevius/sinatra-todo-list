@@ -1,23 +1,15 @@
-<h1><font face="verdana,arial,sans-serif">Do Work: To-Do List</h2> 
-
-<br></br> 
-
-<h3>Edit <%= @task.content %></h3>
-
-<br></br>
+<h3>Edit <%= @task.name %></h3>
 
 <form action="/tasks/<%=@task.id %>" method="POST">
-  <label> Task Content: </label>
-  <input type="text" name="content" value="<%=@task.content %>"> <br></br>
+  <label> Task Name: </label>
+  <input type="text" name="name" value="<%=@task.name %>"> <br></br>
 
   <label> Where does this task go? </label>
     <select name="list_id">
-    <% @lists.each do |list| %>
+    <% current_user.lists.each do |list| %>
       <option value=<%=list.id %> <%= "selected" if list.id==@task.list.id %> ><%= list.name %></option>
     <% end %>
   </select>
   
-  <br><br>
-  
-  <input type="submit" class="btn btn-primary">
+  <input type="submit" value="Update">
 </form>
