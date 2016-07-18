@@ -1,7 +1,3 @@
-<h1><font face="verdana,arial,sans-serif">Do Work: To-Do List</h1> 
-
-<br></br>
-
 <h3><%= @list.name %></h3>
   <h4>Tasks</h4>
   <% @list.tasks.each do |task| %>
@@ -13,7 +9,4 @@
   <br></br>
   
   <a href="/lists/<%=@list.id%>/edit">Edit Name</a>
-  
-  <br></br>
-  
   <a href="/tasks/new">Add Task</a>
