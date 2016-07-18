@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link href='https://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
+  <style>
+      .todo {
+        font-family: 'Shadows Into Light', cursive;
+        right: -5px;
+        top: -20px;
+      }
+    </style>
   <title>Do Work: A To-Do List</title> 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 </head>
@@ -10,7 +18,7 @@
  <nav class="navbar navbar-default navbar-static-top">
   <div class="container">
     <% if logged_in? %>
-   <h1>Do Work: A To-Do List</h1> 
+   <h1 class="todo"><strong>Do Work</strong>: A To-Do List</h1> 
    <h4>
       <a href="/lists/new"> Create List </a> |
       <a href="/tasks/new"> Create Task </a> |
@@ -18,8 +26,7 @@
     </h4>  <!-- <p>Welcome, <%=current_user.username %></p> -->
 
     <% else %>
-    <h1>Do Work: A To-Do List</h1>
-    <h4>
+    <h1 class="todo"><u><strong>Do Work</strong></u>: A To-Do List</h1> 
       <a href="/signup">Sign Up</a> |
       <a href="/login"> Sign In </a> 
     </h4>
