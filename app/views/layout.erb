@@ -1,35 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Do Work: To-Do List</title> 
+  <title>Do Work: A To-Do List</title> 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 </head>
 <body>
 
 <div>
-  <nav>
+ <nav class="navbar navbar-default navbar-static-top">
+  <div class="container">
     <% if logged_in? %>
-
-      <a href="/lists/new"> Create List </a>
+   <h1>Do Work: A To-Do List</h1> 
+   <h4>
+      <a href="/lists/new"> Create List </a> |
+      <a href="/tasks/new"> Create Task </a> |
       <a href="/logout"> Log Out </a>
-      <p>Welcome, <%=current_user.username %></p>
+    </h4>  <!-- <p>Welcome, <%=current_user.username %></p> -->
 
     <% else %>
-      <a href="/signup">Sign Up</a>
-      <a href="/login"> Sign In </a>
+    <h1>Do Work: A To-Do List</h1>
+    <h4>
+      <a href="/signup">Sign Up</a> |
+      <a href="/login"> Sign In </a> 
+    </h4>
     <%end %>
 
   </nav>
 </div>
+<nav>
   <div class="container">
-    <h1>Do Work: To-Do List</h1>
     <% if !@error_message.nil? %>
     <div class="alert alert-warning">
       <%= @error_message %>
     </div>
   <% end %>
-    <%= yield %> 
+    <%= yield %>
+
   </div>
+</nav>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>  
