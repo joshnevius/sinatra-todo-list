@@ -6,7 +6,7 @@
 
   <label> Where does this task go? </label>
     <select name="list_id">
-    <% current_user.lists.each do |list| %>
+    <% @lists.each do |list| %>
       <option value=<%=list.id %> <%= "selected" if list.id==@task.list.id %> ><%= list.name %></option>
     <% end %>
   </select>
