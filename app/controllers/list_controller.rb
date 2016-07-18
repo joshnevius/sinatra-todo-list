@@ -44,5 +44,16 @@ class ListsController < ApplicationController
     redirect '/lists'
   end
 
+  get '/lists/:id/delete' do
+    @list = List.find_by_id(params[:id])
+    erb :'lists/edit'
+  end
+
+  delete '/lists/:id' do 
+    @list = List.find_by_id(params[:id])
+    @list.destroy
+    redirect '/lists'
+  end
+
 
 end
