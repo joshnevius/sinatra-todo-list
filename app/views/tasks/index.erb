@@ -1,6 +1,9 @@
+<h3>All of <%= current_user.username%>'s Tasks</h3>
+
 <% @tasks.each do |task| %>
   <%= task.name %><br />
   <a href="/tasks/<%=task.id%>/edit">Edit Task</a>
   <br />
   <br />
 <% end %>
+

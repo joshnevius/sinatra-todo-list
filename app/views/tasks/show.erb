@@ -1,3 +1,3 @@
 <h3><%= @task.name %></h3>
-<h4>List: <a href="/lists/<%=@task.list.id%>"><%= @task.list.name %></a></h4>
+<h4>*This belongs to the <u><a href="/lists/<%=@task.list.id%>"><%= @task.list.name %></a></u> list</h4>
 <a href="/tasks/<%=@task.id%>/edit">Edit Task</a>
