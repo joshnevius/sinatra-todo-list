@@ -10,10 +10,10 @@
       <option value=<%=list.id %> <%= "selected" if list.id==@task.list.id %> ><%= list.name %></option>
     <% end %>
   </select>
-  
+  <br />
   <input class="btn btn-primary" type="submit" value="Update">
 </form>
-
+<br />
 <form method="post" action="/tasks/<%=@task.id%>">
   <input id="hidden" type="hidden" name="_method" value="delete">
   <input class="btn btn-primary" type="submit" value="Delete">

@@ -4,12 +4,14 @@
   <label> List Name: </label>
   <input type="text" name="name" value="<%=@list.name %>"> 
 
-  <br></br>
+  <br />
 
   <input class="btn btn-primary" type="submit" value="Update">
 
 </form>
+
 <br />
+
 <form method="post" action="/lists/<%=@list.id%>">
   <input id="hidden" type="hidden" name="_method" value="delete">
   <input class="btn btn-primary" type="submit" value="Delete">
