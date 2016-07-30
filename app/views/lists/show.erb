@@ -1,5 +1,5 @@
 <h3><%= @list.name %></h3>
-  <h4>Tasks</h4>
+  <h4>Tasks:</h4>
   <% @list.tasks.each do |task| %>
     <ul>
       <li><h5><a href="/tasks/<%=task.id%>"><%= task.name %></a></h5></li>
