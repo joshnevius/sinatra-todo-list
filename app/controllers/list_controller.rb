@@ -1,5 +1,6 @@
 class ListsController < ApplicationController
 
+# lists index
   get '/lists' do
     redirect_if_not_logged_in
     @lists = List.all
@@ -12,6 +13,7 @@ class ListsController < ApplicationController
     erb :'lists/new'
   end
 
+# edit lists
   get '/lists/:id/edit' do
     redirect_if_not_logged_in
     @error_message = params[:error]
@@ -29,6 +31,7 @@ class ListsController < ApplicationController
     redirect "/lists/#{@list.id}"
   end
 
+# show a list
   get "/lists/:id" do
     redirect_if_not_logged_in
     @list = List.find(params[:id])
@@ -44,6 +47,7 @@ class ListsController < ApplicationController
     redirect '/lists'
   end
 
+# delete lists
   get '/lists/:id/delete' do
     @list = List.find_by_id(params[:id])
     erb :'lists/edit'
