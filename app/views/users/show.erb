@@ -1,4 +1,4 @@
-<p> Here are your lists, <%= @user.username %>
+<h3> Here are your lists, <%= @user.username %></h3>
 <% @user.lists.each do |list| %>
   <ul>
     <li><a href="/lists/<%=list.id%>"><%= list.name %></a></li>
