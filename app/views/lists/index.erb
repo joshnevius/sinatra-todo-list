@@ -1,14 +1,17 @@
 <h2>Hello, <%= current_user.username%>!</h2>
 
 <br />
+
 <h3>Here are your lists:</h3>
 
 <% @lists.each do |list| %>
   <ul>  
     <li><h4><a href ="/lists/<%=list.id%>"><%= list.name %></a></h4></li>
-    <a href="/lists/<%=list.id%>/edit">Edit List</a> &nbsp;<a href="/tasks/new">Add Task</a>
+    <a href="/lists/<%=list.id%>/edit">Edit List</a> |&nbsp;<a href="/tasks/new">Add Task</a>
     
     <br><br>
-  
+    
   </ul>
 <% end %>
+
+ 
