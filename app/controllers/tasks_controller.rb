@@ -50,7 +50,7 @@ class TasksController < ApplicationController
   end
 
 # delete tasks
-  get '/tasks/:id/delete' do 
+  get '/tasks/:id' do 
     @task = Task.find_by_id(params[:id])
     erb :'/tasks/edit'
   end

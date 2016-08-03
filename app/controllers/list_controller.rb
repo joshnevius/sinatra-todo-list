@@ -43,12 +43,12 @@ class ListsController < ApplicationController
     unless List.valid_params?(params)
       redirect "/lists/new?error=invalid list"
     end
-    List.create(params)
+    current_user.lists.create(params)
     redirect '/lists'
   end
 
 # delete lists
-  get '/lists/:id/delete' do
+  get '/lists/:id' do
     @list = List.find_by_id(params[:id])
     erb :'lists/edit'
   end
