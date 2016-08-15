@@ -3,7 +3,7 @@ class TasksController < ApplicationController
 # task index
   get '/tasks' do
     redirect_if_not_logged_in
-    @tasks = Task.all
+    @tasks = Task.find_by_id(params[:id])
     erb :'users/show'
   end
 
@@ -19,7 +19,7 @@ class TasksController < ApplicationController
     redirect_if_not_logged_in 
     @error_message = params[:error]
     @task = Task.find(params[:id])
-    @lists = List.all
+    @lists = List.find(params[:id])
     erb :'tasks/edit'
   end
 
@@ -29,7 +29,7 @@ class TasksController < ApplicationController
     unless Task.valid_params?(params)
       redirect "/tasks/#{@task.id}/edit?error=invalid task"
     end
-    @task.update(params.select{|k|k=="content"})
+    @task.update(params.select{|k|k=="name"})
     redirect "/tasks/#{@task.id}"
   end
 
