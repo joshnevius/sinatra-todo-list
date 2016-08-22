@@ -19,7 +19,7 @@ class TasksController < ApplicationController
     redirect_if_not_logged_in 
     @error_message = params[:error]
     @task = Task.find(params[:id])
-    @lists = List.find(params[:id])
+    @lists = List.all
     erb :'tasks/edit'
   end
 

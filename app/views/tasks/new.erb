@@ -8,7 +8,7 @@
 
   <label> Where should this task go? </label>
   <select name="list_id">
-    <% @lists.each do |list| %>
+    <% current_user.lists.each do |list| %>
       <option value=<%=list.id %>><%= list.name %></option>
     <% end %>
   </select>

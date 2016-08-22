@@ -18,6 +18,9 @@ class ListsController < ApplicationController
     redirect_if_not_logged_in
     @error_message = params[:error]
     @list = List.find(params[:id])
+    if @list.user != current_user
+      redirect "/lists/new?error=this list does not belong to you!!"
+    end
     erb :'lists/edit'
   end
 
@@ -35,11 +38,16 @@ class ListsController < ApplicationController
   get "/lists/:id" do
     redirect_if_not_logged_in
     @list = List.find(params[:id])
-    erb :'lists/show'
+    if @list.user != current_user
+      redirect "/lists/new?error=this list does not belong to you!!"
+    else
+      erb :'lists/show'
+    end
   end
 
   post "/lists" do
     redirect_if_not_logged_in
+
     unless List.valid_params?(params)
       redirect "/lists/new?error=invalid list"
     end
